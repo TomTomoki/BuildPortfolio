@@ -1,2 +1,32 @@
-<h1>Requests#new</h1>
-<p>Find me in app/views/requests/new.html.erb</p>
+<% provide(:title, 'Add Request') %>
+<h1>新規リクエスト作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@request, url: requests_path) do |f| %>
+
+      <p>リクエストタイトル</p>
+      <%= f.text_field :title, class: 'form-control' %>
+
+      <p>詳細</p>
+      <%= f.text_area :request_detail, class: 'form-control' %>
+
+      <p>開始日時</p>
+      <%= f.datetime_field :startDateTime, class: 'form-control' %>
+
+      <p>終了日時</p>
+      <%= f.datetime_field :endDateTime, class: 'form-control' %>
+
+      <p>場所</p>
+      <%= f.text_field :location, class: 'form-control' %>
+
+      <p>条件・必要なスキル</p>
+      <%= f.text_field :requirements, class: 'form-control' %>
+
+      <p>連絡先</p>
+      <%= f.text_field :contact, class: 'form-control' %>
+
+      <%= f.submit "リクエスト作成", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

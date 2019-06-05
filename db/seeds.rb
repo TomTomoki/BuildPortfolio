@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Request.create!(title:"畑の草取り",
+             startDateTime:"2019-10-19 10:25:00",
+             endDateTime:"2019-10-19 14:30:00",
+             request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
+             location: "福岡県糟屋郡志免町",
+             requirements: "長靴、作業服、軍手、飲み物",
+             contact: "000-000-0987")
+
+99.times do |n|
+    title = "畑の草取り",
+    startDateTime = "2019-10-20 10:25:00",
+    endDateTime = "2019-10-20 14:30:00",
+    request_detail = "example-#{n+1}",
+    location = "example-#{n+1}",
+    requirements = "長靴、作業服、軍手、飲み物",
+    contact = "000-000-098#{n+1}"
+
+    Request.create!(title:  title,
+                startDateTime: startDateTime,
+                endDateTime: endDateTime,
+                request_detail: request_detail,
+                location: location,
+                requirements: requirements,
+                contact: contact)
+end
