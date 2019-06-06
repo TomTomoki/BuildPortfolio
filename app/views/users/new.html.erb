@@ -1,0 +1,30 @@
+<% provide(:title, 'ユーザ作成') %>
+<h1>新規ユーザー作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user, url: users_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <p>ユーザーネーム</p>
+      <%= f.text_field :username, class: 'form-control' %>
+
+      <p>氏名</p>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <p>生年月日</p>
+      <%= f.date_field :birthdate, class: 'form-control' %>
+
+      <p>メールアドレス</p>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <p>パスワード</p>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <p>パスワード確認</p>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "ユーザー作成", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

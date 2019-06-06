@@ -1,12 +1,22 @@
+user = User.create!(
+    username:"Test User",
+    name:"Tomoki",
+    birthdate:"2019-10-20",
+    email:"example@railstutorial.org",
+    password:"password",
+    password_confirmation:"password"
+)
+
 Request.create!(title:"畑の草取り",
              startDateTime:"2019-10-19 10:25:00",
              endDateTime:"2019-10-19 14:30:00",
              request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
              location: "福岡県糟屋郡志免町",
              requirements: "長靴、作業服、軍手、飲み物",
-             contact: "000-000-0987")
+             contact: "000-000-0987",
+             user: user)
 
-99.times do |n|
+3.times do |n|
     title = "バス釣り教えてください"
     startDateTime = "2019-10-20 10:25:00"
     endDateTime = "2019-10-20 14:30:00"
@@ -21,5 +31,6 @@ Request.create!(title:"畑の草取り",
                 request_detail: request_detail,
                 location: location,
                 requirements: requirements,
-                contact: contact)
+                contact: contact,
+                user: user)
 end

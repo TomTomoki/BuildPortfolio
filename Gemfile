@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.3'
 gem 'bootstrap-sass', '3.3.7'
 gem 'pry-rails'
 gem 'rails-i18n'
+gem 'bcrypt',         '3.1.12'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
