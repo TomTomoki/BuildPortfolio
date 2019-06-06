@@ -4,6 +4,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@request, url: requests_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <p>リクエストタイトル</p>
       <%= f.text_field :title, class: 'form-control' %>

@@ -6,6 +6,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     if @request.save
+      flash[:success] = "新規リクエストが作成されました。"
       render 'show'
       #redirect_to root_url
     else
@@ -23,6 +24,6 @@ class RequestsController < ApplicationController
 
   private
     def request_params
-      params.require(:request).permit(:title, :date, :time)
+      params.require(:request).permit(:title, :startDateTime, :endDateTime, :request_detail, :location, :requirements, :contact)
     end
 end

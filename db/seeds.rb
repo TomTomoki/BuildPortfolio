@@ -7,15 +7,15 @@ Request.create!(title:"畑の草取り",
              contact: "000-000-0987")
 
 99.times do |n|
-    title = "畑の草取り",
-    startDateTime = "2019-10-20 10:25:00",
-    endDateTime = "2019-10-20 14:30:00",
-    request_detail = "example-#{n+1}",
-    location = "example-#{n+1}",
-    requirements = "長靴、作業服、軍手、飲み物",
+    title = "バス釣り教えてください"
+    startDateTime = "2019-10-20 10:25:00"
+    endDateTime = "2019-10-20 14:30:00"
+    request_detail = "example-#{n+1}"
+    location = "example-#{n+1}"
+    requirements = "長靴、作業服、軍手、飲み物"
     contact = "000-000-098#{n+1}"
 
-    Request.create!(title:  title,
+    Request.create!(title: title,
                 startDateTime: startDateTime,
                 endDateTime: endDateTime,
                 request_detail: request_detail,

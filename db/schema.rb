@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 2019_06_05_083713) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "request_detail"
-    t.datetime "startDateTime"
-    t.datetime "endDateTime"
     t.string "location"
     t.text "requirements"
     t.string "contact"
+    t.datetime "startDateTime"
+    t.datetime "endDateTime"
   end
 
 end
