@@ -1,6 +1,8 @@
 class User < ApplicationRecord
+    has_many :requests, dependent: :destroy
+    has_many :applications, dependent: :destroy
+
     attr_accessor :remember_token
-    has_many :requests
     before_save { self.email = email.downcase }
     validates(:username, presence: true, length: {:maximum => 50})
     validates(:name, presence: true, length: {:maximum => 50})
