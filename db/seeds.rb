@@ -39,7 +39,7 @@ request = Request.create!(
     )
 end
 
-Application.create!(
+Request_Application.create!(
     applicant_id: user.id,
     request: request,
     status: "applied"

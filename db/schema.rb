@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_024426) do
+ActiveRecord::Schema.define(version: 2019_06_24_052827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
+  create_table "request_applications", force: :cascade do |t|
     t.bigint "applicant_id"
     t.bigint "request_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["applicant_id"], name: "index_applications_on_applicant_id"
-    t.index ["request_id"], name: "index_applications_on_request_id"
+    t.index ["applicant_id"], name: "index_request_applications_on_applicant_id"
+    t.index ["request_id"], name: "index_request_applications_on_request_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_06_24_024426) do
     t.string "remember_digest"
   end
 
-  add_foreign_key "applications", "requests"
-  add_foreign_key "applications", "users", column: "applicant_id"
+  add_foreign_key "request_applications", "requests"
+  add_foreign_key "request_applications", "users", column: "applicant_id"
   add_foreign_key "requests", "users"
 end
