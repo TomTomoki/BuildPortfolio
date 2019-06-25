@@ -8,8 +8,8 @@
     </section>
   </aside>
   <div class="col-md-8">
-    <% if @user.requests.any? %>
-      <h3>投稿リクエスト (<%= @user.requests.count %>)</h3>
+    <% if @user.created_requests.any? %>
+      <h3>投稿リクエスト (<%= @user.created_requests.count %>)</h3>
       <ol>
       <%= render partial: 'shared/request', collection: @requests%>
       </ol>

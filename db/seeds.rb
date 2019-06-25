@@ -7,6 +7,15 @@ user = User.create!(
     password_confirmation:"password"
 )
 
+user2 = User.create!(
+    username:"Kazr",
+    name:"Kaz",
+    birthdate:"2019-10-20",
+    email:"example2@railstutorial.org",
+    password:"password",
+    password_confirmation:"password"
+)
+
 request = Request.create!(
         title:"畑の草取り",
         startDateTime:"2019-10-19 10:25:00",
@@ -15,7 +24,9 @@ request = Request.create!(
         location: "福岡県糟屋郡志免町",
         requirements: "長靴、作業服、軍手、飲み物",
         contact: "000-000-0987",
-        user: user
+        creator: user2,
+        status: "closed",
+        recruitment_number: 2
 )
 
 3.times do |n|
@@ -35,12 +46,14 @@ request = Request.create!(
         location: location,
         requirements: requirements,
         contact: contact,
-        user: user
+        creator: user,
+        status: "open",
+        recruitment_number: 1
     )
 end
 
 Request_Application.create!(
-    applicant_id: user.id,
-    request: request,
+    applicant: user,
+    applied_request: request,
     status: "applied"
 )

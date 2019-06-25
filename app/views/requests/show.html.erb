@@ -4,4 +4,10 @@
 <p><%= @request.startDateTime %></p>
 <p><%= @request.endDateTime %></p>
 
-<%= button_to "応募", apply_path, method: :post %>
+<% if @request.status == "closed" %>
+    <button type="button" class="btn btn-lg btn-primary" disabled>募集終了</button>
+<% elsif !current_user.applied?(@request) %>
+    <%= button_to "応募", apply_path, method: :post, data: { confirm: "この募集に応募しますか?" }, id: 'applyBtn', class: 'btn btn-primary' %>
+<% else %>
+    <%= button_to "応募取り消し", withdraw_path, method: :delete, data: { confirm: "応募を取り消しますか?" }, id: 'applyBtn', class: 'btn btn-primary' %>
+<% end %>

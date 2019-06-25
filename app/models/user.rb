@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-    has_many :requests, dependent: :destroy
-    has_many :applications, dependent: :destroy
+    has_many :created_requests, foreign_key: "creator_id", class_name: "Request", dependent: :destroy
+
+    has_many :request_applications
+    has_many :applied_requests, through: :request_applications, dependent: :destroy
 
     attr_accessor :remember_token
     before_save { self.email = email.downcase }
@@ -41,5 +43,17 @@ class User < ApplicationRecord
     # ユーザーのログイン情報を破棄する
     def forget
         update_attribute(:remember_digest, nil)
+    end
+
+    # 履歴書の登録状況を確認する
+    def resume_registered?
+        true
+
+        #self.resume,nil?
+    end
+
+    # このリクエストへの応募情報を確認する
+    def applied?(request)
+        
     end
 end

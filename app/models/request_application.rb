@@ -1,4 +1,4 @@
 class Request_Application < ApplicationRecord
-    belongs_to :applicant, class_name: "User"
-    belongs_to :request, class_name: "Request"
+    belongs_to :applicant, foreign_key: "applicant_id", class_name: "User"
+    belongs_to :applied_request, foreign_key: "request_id", class_name: "Request"
 end
