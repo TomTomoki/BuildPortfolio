@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-    has_many :created_requests, foreign_key: "creator_id", class_name: "Request", dependent: :destroy
+    has_many :created_requests, class_name: "Request", foreign_key: "creator_id", dependent: :destroy
 
-    has_many :request_applications
-    has_many :applied_requests, through: :request_applications, dependent: :destroy
+    has_many :request_applications, class_name: "Request_Application", foreign_key: "applicant_id"
+    has_many :applied_requests, class_name: "Request", through: :request_applications, dependent: :destroy
 
     attr_accessor :remember_token
     before_save { self.email = email.downcase }

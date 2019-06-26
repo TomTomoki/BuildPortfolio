@@ -30,7 +30,7 @@ request = Request.create!(
 )
 
 3.times do |n|
-    title = "バス釣り教えてください"
+    title = "バス釣り教えてください-#{n+1}"
     startDateTime = "2019-10-20 10:25:00"
     endDateTime = "2019-10-20 14:30:00"
     request_detail = "example-#{n+1}"

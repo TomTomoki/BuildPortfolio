@@ -1,18 +1,47 @@
 <% provide(:title, @user.name) %>
+
 <div class="row">
-  <aside class="col-md-4">
+  <div class="col-md-4 border">
     <section class="user_info">
       <h1>
         <%= @user.name %>
       </h1>
+      <p>ユーザー名: <%= @user.username %>
     </section>
-  </aside>
+  </div>
+
   <div class="col-md-8">
-    <% if @user.created_requests.any? %>
-      <h3>投稿リクエスト (<%= @user.created_requests.count %>)</h3>
-      <ol>
-      <%= render partial: 'shared/request', collection: @requests%>
-      </ol>
-    <% end %>
+    <div>  
+      <h3>投稿した募集 (<%= @user.created_requests.count %>)</h3>
+      <% if @user.created_requests.any? %>
+        <ol>
+          <%= render partial: 'shared/request', collection: @createdRequests%>
+        </ol>
+      <% end %>
+    </div>
+    <div>
+      <h3>応募した募集 (<%= @user.applied_requests.count %>)</h3>
+      <% if @user.applied_requests.any? %>
+        <ol>
+          <%= render partial: 'shared/request', collection: @appliedRequests%>
+        </ol>
+      <% end %>
+    </div>
+    <div>
+      <h3>取り組み中のお仕事 (<%=  %>)</h3>
+      <% if @user.applied_requests.any? %>
+        <ol>
+          
+        </ol>
+      <% end %>
+    </div>
+    <div>
+      <h3>完了済みのお仕事 (<%=  %>)</h3>
+      <% if @user.applied_requests.any? %>
+        <ol>
+          
+        </ol>
+      <% end %>
+    </div>
   </div>
 </div>
