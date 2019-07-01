@@ -19,14 +19,14 @@ user2 = User.create!(
 request = Request.create!(
         title:"畑の草取り",
         startDateTime:"2019-10-19 10:25:00",
-        endDateTime:"2019-10-19 14:30:00",
+        endDateTime:"2019-10-20 14:30:00",
         request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
         location: "福岡県糟屋郡志免町",
         requirements: "長靴、作業服、軍手、飲み物",
         contact: "000-000-0987",
         creator: user2,
         status: "closed",
-        recruitment_number: 2
+        recruitment_number: 1
 )
 
 3.times do |n|
@@ -55,5 +55,5 @@ end
 Request_Application.create!(
     applicant: user,
     applied_request: request,
-    status: "applied"
+    status: "working"
 )
