@@ -4,4 +4,5 @@ class Request_Application < ApplicationRecord
 
     validates(:applicant_id, uniqueness: {scope: :request_id})
     
+    
 end
