@@ -1,5 +1,5 @@
 current directory: /Users/tomtom/Local/CSC/Code/Rails-Fusic/project_app/vendor/bundle/ruby/2.6.0/gems/pg-1.1.4/ext
-/Users/tomtom/.rbenv/versions/2.6.3/bin/ruby -I /Users/tomtom/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20190701-2382-7ssswb.rb extconf.rb
+/Users/tomtom/.rbenv/versions/2.6.3/bin/ruby -I /Users/tomtom/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20190701-2879-190mfj2.rb extconf.rb
 checking for pg_config... no
 No pg_config... trying anyway. If building fails, please try again with
  --with-pg-config=/path/to/pg_config
