@@ -5,10 +5,8 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    if !@request.check_start_end_dates
-      flash[:danger] = "終了日時は開始日時以降で設定してください。"
-      render 'new'
-    elsif @request.save
+    @request[:creator_id] = current_user.id
+    if @request.save
       flash[:success] = "新規リクエストが作成されました。"
       render 'show'
     else
@@ -25,11 +23,16 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    request = Request.find(params[:id])
+    if creator?(request)
+      Request.find(params[:id]).destroy
+      flash[:success] = "募集を削除しました"
+      redirect_to current_user
+    end
   end
 
   private
     def request_params
-      params.require(:request).permit(:title, :startDateTime, :endDateTime, :request_detail, :location, :requirements, :contact)
+      params.require(:request).permit(:title, :startDateTime, :endDateTime, :request_detail, :location, :requirements, :contact, :recruitment_number)
     end
 end

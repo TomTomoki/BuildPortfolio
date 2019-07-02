@@ -7,7 +7,7 @@
 
 <% if current_user.id == @request.creator_id %>
     <p>応募数: <%= @request.applicants.count %></p>
-    <%= button_to "募集削除", request_path, method: :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-primary' %>
+    <%= button_to "募集削除", { :action => "destroy", :id => @request.id }, :confirm => "本当に削除しますか?", :method => :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-primary' %>
 <% elsif @request.status == "closed" %>
     <button type="button" class="btn btn-lg btn-primary" disabled>募集終了</button>
 <% elsif !current_user.applied?(@request) %>

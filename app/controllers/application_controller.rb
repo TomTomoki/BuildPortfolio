@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    include SessionsHelper
+    include SessionsHelper, RequestsHelper
     before_action :set_request_from
 
     # どこのページからリクエストが来たか保存しておく

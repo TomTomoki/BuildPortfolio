@@ -25,7 +25,6 @@ request = Request.create!(
         requirements: "長靴、作業服、軍手、飲み物",
         contact: "000-000-0987",
         creator: user2,
-        status: "closed",
         recruitment_number: 1
 )
 
@@ -47,7 +46,6 @@ request = Request.create!(
         requirements: requirements,
         contact: contact,
         creator: user,
-        status: "open",
         recruitment_number: 1
     )
 end

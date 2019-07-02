@@ -9,12 +9,13 @@ class Request < ApplicationRecord
     validates(:endDateTime, presence: true)
     validate(:check_start_end_dates)
     validates(:location, presence: true)
+    validates(:recruitment_number, presence: true)
     validates(:contact, presence: true)
     validates(:creator_id, presence: true)
 
 
-
     def check_start_end_dates
+        return false if self.startDateTime.nil? || self.endDateTime.nil?
         if self.startDateTime >= self.endDateTime
             errors.add(:endDateTime, ": 終了は開始日時より後の日時のみ設定可能です。")
         end
