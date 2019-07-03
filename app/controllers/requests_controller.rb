@@ -23,11 +23,14 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    request = Request.find(params[:id])
-    if creator?(request)
-      Request.find(params[:id]).destroy
+    @request = Request.find(params[:id])
+    if creator?(@request)
+      @request.destroy
       flash[:success] = "募集を削除しました"
       redirect_to current_user
+    else
+      flash.now[:danger] = "他ユーザーの募集は削除できません。"
+      render 'requests/show'
     end
   end
 

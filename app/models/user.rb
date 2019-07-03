@@ -45,15 +45,18 @@ class User < ApplicationRecord
         update_attribute(:remember_digest, nil)
     end
 
+    # このリクエストへの応募状況を確認する
+    def application_status(request)
+        application = Request_Application.find_by(applicant_id: self.id, request_id: request.id)
+        if application.nil?
+            return "notapplied"
+        else
+            return application.status
+        end
+    end
+
     # 履歴書の登録状況を確認する
     def resume_registered?
         true
-
-        #self.resume,nil?
-    end
-
-    # このリクエストへの応募情報を確認する
-    def applied?(request)
-        
     end
 end

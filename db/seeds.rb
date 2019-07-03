@@ -28,6 +28,42 @@ request = Request.create!(
         recruitment_number: 1
 )
 
+Request.create!(
+        title:"Rails1",
+        startDateTime:"2019-10-19 10:25:00",
+        endDateTime:"2019-10-20 14:30:00",
+        request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
+        location: "福岡県糟屋郡志免町",
+        requirements: "パソコン",
+        contact: "000-000-0987",
+        creator: user2,
+        recruitment_number: 2
+)
+
+Request.create!(
+        title:"Rails2",
+        startDateTime:"2019-10-19 10:25:00",
+        endDateTime:"2019-10-20 14:30:00",
+        request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
+        location: "福岡県糟屋郡志免町",
+        requirements: "パソコン",
+        contact: "000-000-0987",
+        creator: user2,
+        recruitment_number: 2
+)
+
+Request.create!(
+        title:"Rails3",
+        startDateTime:"2019-10-19 10:25:00",
+        endDateTime:"2019-10-20 14:30:00",
+        request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
+        location: "福岡県糟屋郡志免町",
+        requirements: "パソコン",
+        contact: "000-000-0987",
+        creator: user2,
+        recruitment_number: 2
+)
+
 3.times do |n|
     title = "バス釣り教えてください-#{n+1}"
     startDateTime = "2019-10-20 10:25:00"
@@ -53,5 +89,5 @@ end
 Request_Application.create!(
     applicant: user,
     applied_request: request,
-    status: "working"
+    status: "applied"
 )

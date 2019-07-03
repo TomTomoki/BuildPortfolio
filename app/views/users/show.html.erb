@@ -1,13 +1,20 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <div class="col-md-4 border border-primary">
-    <section class="user_info">
-      <h1>
-        <%= @user.name %>
-      </h1>
-      <p>ユーザー名: <%= @user.username %>
-    </section>
+  <div class="col-md-3 profile border border-primary">
+    <div class="profile-sidebar">
+      <div class="profile-userpic">
+        <img src="/images/default_pic.png" class="img-responsive" alt="Cinque Terre">
+      </div>
+      <div class="profile-usertitle">
+        <div class="profile-name">
+          <%= @user.name %>
+        </div>
+        <div class="profile-username">
+          ユーザー名: <%= @user.username %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="col-md-8">
