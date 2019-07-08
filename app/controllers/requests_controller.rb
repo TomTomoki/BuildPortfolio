@@ -4,12 +4,12 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params)
-    @request[:creator_id] = current_user.id
-    if @request.save
+    @request = current_user.created_requests.create!(request_params)
+    if !@request.nil?
       flash[:success] = "新規リクエストが作成されました。"
       render 'show'
     else
+      flash[:danger] = "新規リクエストが作成失敗。"
       render 'new'
     end
   end
@@ -23,14 +23,23 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @request = Request.find(params[:id])
-    if creator?(@request)
-      @request.destroy
-      flash[:success] = "募集を削除しました"
-      redirect_to current_user
+    @request = current_user.created_requests.find(params[:id])
+    @request.destroy
+    flash[:success] = "募集を削除しました。"
+    redirect_to current_user
+  end
+
+  def update
+  end
+
+  def change_status
+    @request = current_user.created_requests.find(params[:id])
+    if @request.update_attributes(open: !@request.open)
+      flash[:success] = "募集ステータスを変更しました。"
+      render 'show'
     else
-      flash.now[:danger] = "他ユーザーの募集は削除できません。"
-      render 'requests/show'
+      flash[:danger] = "募集ステータスの変更に失敗しました。"
+      render 'show'
     end
   end
 

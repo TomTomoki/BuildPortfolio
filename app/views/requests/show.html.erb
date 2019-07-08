@@ -1,25 +1,37 @@
 <% provide(:title, @request.title) %>
 
-<p><%= @request.title %></p>
-<p><%= @request.startDateTime %></p>
-<p><%= @request.endDateTime %></p>
-<p>募集数: <%= @request.recruitment_number %></p>
+<div class="row">
+    <div class ="col-md-8">
+        <p><%= @request.title %></p>
+        <p><%= @request.startDateTime %></p>
+        <p><%= @request.endDateTime %></p>
+        <p>募集数: <%= @request.recruitment_number %></p>
+
+        <% if current_user.id == @request.creator_id %>
+            <p>応募数: <%= @request.applicants.count %></p>
+            <p>ステータス: <%= @request.request_status_inJap %></p>
+            <%= button_to "募集削除", request_path(@request), method: :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-primary' %>
+            <%= button_to "募集ステータス変更", change_status_request_path, method: :patch, data: { confirm: "募集ステータスを変更しますか?" }, class: 'btn btn-primary' %>
+        <% elsif !@request.open && current_user.application_status(@request) == "notapplied" %>
+            <button type="button" class="btn btn-lg btn-primary" disabled>募集終了</button>
+        <% elsif @request.open && current_user.application_status(@request) == "notapplied" %>
+            <%= button_to "応募", apply_path(request: @request), method: :post, data: { confirm: "この募集に応募しますか?" }, class: 'btn btn-primary' %>
+        <% elsif current_user.application_status(@request) == "rejected" %>
+            <button type="button" class="btn btn-lg btn-primary" disabled>今回は不採用となりました</button>    
+        <% elsif current_user.application_status(@request) == "applied" %>
+            <%= button_to "応募辞退", withdraw_path(request: @request), method: :delete, data: { confirm: "この応募を辞退しますか?" }, class: 'btn btn-primary' %>
+        <% elsif current_user.application_status(@request) == "working" %>
+            <button type="button" class="btn btn-lg btn-primary" disabled>取り組み中</button>
+        <% elsif current_user.application_status(@request) == "completed" %>
+            <button type="button" class="btn btn-lg btn-primary" disabled>作業完了</button>
+        <% else %>
+            うまくif使えてないぞー
+        <% end %>
+    </div>
+</div>
 
 <% if current_user.id == @request.creator_id %>
-    <p>応募数: <%= @request.applicants.count %></p>
-    <%= button_to "募集削除", request_path, method: :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-primary' %>
-<% elsif @request.status == "closed" && current_user.application_status(@request) == "notapplied" %>
-    <button type="button" class="btn btn-lg btn-primary" disabled>募集終了</button>
-<% elsif @request.status == "open" && current_user.application_status(@request) == "notapplied" %>
-    <%= button_to "応募", apply_path(request: @request), method: :post, data: { confirm: "この募集に応募しますか?" }, class: 'btn btn-primary' %>
-<% elsif current_user.application_status(@request) == "rejected" %>
-    <button type="button" class="btn btn-lg btn-primary" disabled>今回は不採用となりました</button>    
-<% elsif current_user.application_status(@request) == "applied" %>
-    <%= button_to "応募辞退", withdraw_path(request: @request), method: :delete, data: { confirm: "この応募を辞退しますか?" }, class: 'btn btn-primary' %>
-<% elsif current_user.application_status(@request) == "working" %>
-    <button type="button" class="btn btn-lg btn-primary" disabled>取り組み中</button>
-<% elsif current_user.application_status(@request) == "completed" %>
-    <button type="button" class="btn btn-lg btn-primary" disabled>作業完了</button>
-<% else %>
-    うまくif使えてないぞー
+    <div class="row">
+        <%= render partial: 'requests/applications_status' %>
+    </div>
 <% end %>

@@ -1,0 +1,4 @@
+<li>
+  <%= link_to applicant.name, applicant %>
+  <%= button_to "不採用", request_path(@request), method: :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-primary' %>
+</li>

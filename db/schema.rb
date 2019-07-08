@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_082654) do
+ActiveRecord::Schema.define(version: 2019_07_03_043441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_082654) do
     t.datetime "startDateTime"
     t.datetime "endDateTime"
     t.bigint "creator_id"
-    t.string "status", default: "open"
     t.integer "recruitment_number"
+    t.boolean "open", default: true
     t.index ["creator_id"], name: "index_requests_on_creator_id"
   end
 
