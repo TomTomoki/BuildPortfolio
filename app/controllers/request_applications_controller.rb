@@ -14,10 +14,22 @@ class RequestApplicationsController < ApplicationController
     end
 
     def destroy
-        user = current_user
-        @request = Request.find(params[:request])
-        Request_Application.find_by(applicant_id: user.id, request_id: @request.id).destroy
-        flash.now[:success] = "応募を辞退しました。"
+        @request = current_user.applied_requests.find(params[:request])
+        if Request_Application.find_by(applicant_id: current_user.id, request_id: @request.id).destroy
+            flash.now[:success] = "応募を辞退しました。"
+            render 'requests/show'
+        else
+            flash.now[:danger] = "応募を辞退できませんでした。"
+            render 'requests/show'
+        end
+    end
+
+    def change_application_status
+        @request = current_user.created_requests.find(params[:request])
+        applicant = @request.applicants.find(params[:applicant])
+
+        Request_Application.find_by(applicant_id: applicant.id, request_id: @request.id).update(status: params[:new_status])
+        flash.now[:success] = "hello"
         render 'requests/show'
     end
 end

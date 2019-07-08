@@ -18,35 +18,39 @@
   </div>
 
   <div class="col-md-8">
-    <div>  
-      <h3>投稿した募集 (<%= @user.created_requests.count %>)</h3>
-      <% if @user.created_requests.any? %>
+    <div>
+      <% created_requests = @user.created_requests %>
+      <h3>投稿した募集 (<%= created_requests.count %>)</h3>
+      <% if created_requests.any? %>
         <ol>
-          <%= render partial: 'shared/request', collection: @createdRequests%>
+          <%= render partial: 'shared/request', collection: created_requests%>
         </ol>
       <% end %>
     </div>
     <div>
-      <h3>応募した募集 (<%= @user.applied_requests.count %>)</h3>
-      <% if @user.applied_requests.any? %>
+      <% applied_rejected_requests = @user.get_my_applieds_rejecteds %>
+      <h3>応募した募集 (<%= applied_rejected_requests.count %>)</h3>
+      <% if applied_rejected_requests.any? %>
         <ol>
-          <%= render partial: 'shared/request', collection: @appliedRequests%>
+          <%= render partial: 'shared/request', collection: applied_rejected_requests%>
         </ol>
       <% end %>
     </div>
     <div>
-      <h3>取り組み中のお仕事 (<%=  %>)</h3>
-      <% if @user.applied_requests.any? %>
+      <% working_requests = @user.get_my_workings %>
+      <h3>取り組み中のお仕事 (<%= working_requests.count %>)</h3>
+      <% if working_requests.any? %>
         <ol>
-          
+          <%= render partial: 'shared/request', collection: working_requests%>
         </ol>
       <% end %>
     </div>
     <div>
-      <h3>完了済みのお仕事 (<%=  %>)</h3>
-      <% if @user.applied_requests.any? %>
+      <% completed_requests = @user.get_my_completeds %>
+      <h3>完了済みのお仕事 (<%= completed_requests.count %>)</h3>
+      <% if completed_requests.any? %>
         <ol>
-          
+          <%= render partial: 'shared/request', collection: completed_requests%>
         </ol>
       <% end %>
     </div>

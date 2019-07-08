@@ -59,4 +59,16 @@ class User < ApplicationRecord
     def resume_registered?
         true
     end
+
+    def get_my_applieds_rejecteds
+        Request_Application.select{ |a| (a.status == "applied" || a.status == "rejected") && a.applicant_id == self.id }.map{ |r| r.applied_request }
+    end
+
+    def get_my_workings
+        Request_Application.select{ |a| a.status == "working" && a.applicant_id == self.id }.map{ |r| r.applied_request }
+    end
+
+    def get_my_completeds
+        Request_Application.select{ |a| a.status == "completed" && a.applicant_id == self.id }.map{ |r| r.applied_request }
+    end
 end

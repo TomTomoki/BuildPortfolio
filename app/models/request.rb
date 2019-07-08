@@ -32,23 +32,19 @@ class Request < ApplicationRecord
         end
     end
 
-    def get_applied_applicants
-        self.request_applications.select{ |a| a.status = "applied" }.map{ |r| r.applicant }
+    def get_applieds
+        Request_Application.select{ |a| a.status == "applied" && a.request_id == self.id }.map{ |r| r.applicant }
     end
 
     def get_workings
-        self.request_applications.select{ |a| a.status = "working" }
+        Request_Application.select{ |a| a.status == "working" && a.request_id == self.id }.map{ |r| r.applicant }
     end
 
     def get_completeds
-        self.request_applications.select{ |a| a.status = "completed" }
+        Request_Application.select{ |a| a.status == "completed" && a.request_id == self.id }.map{ |r| r.applicant }
     end
 
     def get_rejecteds
-        self.request_applications.select{ |a| a.status = "rejected" }
-    end
-
-    def get_withdrawns
-        self.request_applications.select{ |a| a.status = "withdrawn" }
+        Request_Application.select{ |a| a.status == "rejected" && a.request_id == self.id }.map{ |r| r.applicant }
     end
 end

@@ -3,8 +3,8 @@ class Request_Application < ApplicationRecord
     belongs_to :applied_request, class_name: "Request", foreign_key: "request_id"
 
     validates(:applicant_id, uniqueness: {scope: :request_id})
-    validate(:numOf_working_requests_cannot_be_more_than_recruitment_numbers)
-    validate(:creator_cannot_apply_to_his_own_request)
+    #validate(:numOf_working_requests_cannot_be_more_than_recruitment_numbers)
+    #validate(:creator_cannot_apply_to_his_own_request)
 
     
     def numOf_working_requests_cannot_be_more_than_recruitment_numbers
@@ -17,7 +17,7 @@ class Request_Application < ApplicationRecord
                 counter += 1
             end
 
-            if (counter >= Request.find(self.request_id).recruitment_number)
+            if (counter > application.recruitment_number)
                 errors.add(:status, ": 募集人数を超えた採用はできません")
             end
         }

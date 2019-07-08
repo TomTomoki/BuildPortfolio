@@ -17,8 +17,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @createdRequests = @user.created_requests
-    @appliedRequests = @user.applied_requests
   end
 
   private

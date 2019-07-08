@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #patch  '/request', to: 'requests#change_open_status'
   resources :requests do
     member do
-      patch "change_status"
+      patch "change_open_status"
     end
   end
 
@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   post   '/apply',   to: 'request_applications#create'
-  delete   '/withdraw',   to: 'request_applications#destroy'
+  delete '/withdraw',   to: 'request_applications#destroy'
+  patch  '/change_application_status', to: 'request_applications#change_application_status'
 end

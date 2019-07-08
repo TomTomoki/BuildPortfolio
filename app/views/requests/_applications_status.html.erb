@@ -1,23 +1,35 @@
-<div class ="col-md-3">
-    <p><%= @request.title %></p>
+<div class ="col-md-4">
+    <h2>＜募集状況＞</h2>
 
-    <% applieds = @request.get_applied_applicants %>
+    <% applieds = @request.get_applieds %>
     <h3>応募者 (<%= applieds.count %>)</h3>
     <% if applieds.any? %>
         <ol>
-            <%= render partial: 'requests/applicant', collection: applieds, as: :applicant%>
+            <%= render partial: 'requests/applicant', collection: applieds, as: :applicant, locals: {current_status: "applied"} %>
         </ol>
     <% end %>
-</div>
 
-<div class ="col-md-3">
-    <p><%= @request.title %></p>
-
-    <% applieds = @request.get_applied_applicants %>
-    <h3>取り組み中 (<%= applieds.count %>)</h3>
-    <% if applieds.any? %>
+    <% workings = @request.get_workings %>
+    <h3>取り組み中 (<%= workings.count %>)</h3>
+    <% if workings.any? %>
         <ol>
-            <%= render partial: 'requests/applicant', collection: applieds, as: :applicant%>
+            <%= render partial: 'requests/applicant', collection: workings, as: :applicant, locals: {current_status: "working"} %>
+        </ol>
+    <% end %>
+
+    <% completeds = @request.get_completeds %>
+    <h3>終了済み (<%= completeds.count %>)</h3>
+    <% if completeds.any? %>
+        <ol>
+            <%= render partial: 'requests/applicant', collection: completeds, as: :applicant, locals: {current_status: "completed"} %>
+        </ol>
+    <% end %>
+
+    <% rejecteds = @request.get_rejecteds %>
+    <h3>不採用 (<%= rejecteds.count %>)</h3>
+    <% if rejecteds.any? %>
+        <ol>
+            <%= render partial: 'requests/applicant', collection: rejecteds, as: :applicant, locals: {current_status: "rejected"} %>
         </ol>
     <% end %>
 </div>

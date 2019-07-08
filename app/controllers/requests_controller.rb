@@ -24,17 +24,21 @@ class RequestsController < ApplicationController
 
   def destroy
     @request = current_user.created_requests.find(params[:id])
-    @request.destroy
-    flash[:success] = "募集を削除しました。"
-    redirect_to current_user
+    if @request.destroy
+      flash[:success] = "募集を削除しました。"
+      redirect_to current_user
+    else
+      flash[:danger] = "募集削除に失敗しました。"
+      redirect_to current_user
+    end
   end
 
   def update
   end
 
-  def change_status
+  def change_open_status
     @request = current_user.created_requests.find(params[:id])
-    if @request.update_attributes(open: !@request.open)
+    if @request.update(open: !@request.open)
       flash[:success] = "募集ステータスを変更しました。"
       render 'show'
     else
