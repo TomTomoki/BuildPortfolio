@@ -26,7 +26,7 @@
     <% end %>
 
     <% rejecteds = @request.get_rejecteds %>
-    <h3>不採用 (<%= rejecteds.count %>)</h3>
+    <h3>不採用・解雇 (<%= rejecteds.count %>)</h3>
     <% if rejecteds.any? %>
         <ol>
             <%= render partial: 'requests/applicant', collection: rejecteds, as: :applicant, locals: {current_status: "rejected"} %>

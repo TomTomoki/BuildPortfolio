@@ -28,4 +28,18 @@ class Request_Application < ApplicationRecord
             errors.add(:status, ": 募集投稿者は自身の募集に応募できません")
         end
     end
+
+    def status_in_Jap
+        if self.status == "applied"
+            "応募済み"
+        elsif self.status == "working"
+            "取り組み中"
+        elsif self.status == "completed"
+            "終了済み"
+        elsif self.status == "rejected"
+            "不採用・解雇"
+        else
+            "エラー"
+        end
+    end
 end

@@ -28,8 +28,10 @@ class RequestApplicationsController < ApplicationController
         @request = current_user.created_requests.find(params[:request])
         applicant = @request.applicants.find(params[:applicant])
 
-        Request_Application.find_by(applicant_id: applicant.id, request_id: @request.id).update(status: params[:new_status])
-        flash.now[:success] = "hello"
+        application = Request_Application.find_by(applicant_id: applicant.id, request_id: @request.id)
+
+        application.update(status: params[:new_status])
+        flash.now[:success] = "応募者のステータスを「#{application.status_in_Jap}」に変更しました"
         render 'requests/show'
     end
 end
