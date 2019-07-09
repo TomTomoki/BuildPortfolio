@@ -1,7 +1,30 @@
-<% provide(:title, 'All requests') %>
+<% provide(:title, '募集を探す') %>
 
-<h1>全ての依頼</h1>
+<div class="row">
+  <div class="col-md-3">
+    <div class="card Ccard-frame">
+      <article class="card-group-item">
+        <header class="card-header"><h6 class="title">カテゴリー</h6></header>
+        <div class="filter-content">
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item">プログラミング<span class="float-right badge badge-light round">4</span> </a>
+            <a href="#" class="list-group-item">外国語<span class="float-right badge badge-light round">2</span>  </a>
+            <a href="#" class="list-group-item">スポーツ<span class="float-right badge badge-light round">3</span>  </a>
+            <a href="#" class="list-group-item">農業<span class="float-right badge badge-light round">12</span>  </a>
+            <a href="#" class="list-group-item">etc...<span class="float-right badge badge-light round">?</span>  </a>
+          </div>  <!-- list-group .// -->
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="row Crow-bottom-space">
+      <div class="col-md-12">
+        <h3>全ての募集 (<%= @requests.count %>件)</h3>
+      </div>
+      <% if @requests.any? %>
+        <%= render partial: 'shared/request', collection: @requests%>
+      <% end %>
+    </div>
+</div>
 
-<ul class="requests">
-  <%= render partial: 'shared/request', collection: @requests%>
-</ul>

@@ -1,8 +1,7 @@
 <% provide(:title, @user.name) %>
-
 <div class="row">
-  <div class="col-md-3 profile border border-primary">
-    <div class="profile-sidebar">
+  <div class="col-md-3">
+    <div class="profile-sidebar border">
       <div class="profile-userpic">
         <img src="/images/default_pic.png" class="img-responsive" alt="Cinque Terre">
       </div>
@@ -16,42 +15,44 @@
       </div>
     </div>
   </div>
-
   <div class="col-md-8">
-    <div>
+    <div class="row Crow-bottom-space">
       <% created_requests = @user.created_requests %>
-      <h3>投稿した募集 (<%= created_requests.count %>)</h3>
+      <div class="col-md-12">
+        <h3>投稿した募集 (<%= created_requests.count %>件)</h3>
+      </div>
       <% if created_requests.any? %>
-        <ol>
-          <%= render partial: 'shared/request', collection: created_requests%>
-        </ol>
+        <%= render partial: 'shared/request', collection: created_requests%>
       <% end %>
     </div>
-    <div>
+
+    <div class="row Crow-bottom-space">
       <% applied_rejected_requests = @user.get_my_applieds_rejecteds %>
-      <h3>応募した募集 (<%= applied_rejected_requests.count %>)</h3>
+      <div class="col-md-12">
+        <h3>応募した募集 (<%= applied_rejected_requests.count %>件)</h3>
+      </div>
       <% if applied_rejected_requests.any? %>
-        <ol>
-          <%= render partial: 'shared/request', collection: applied_rejected_requests%>
-        </ol>
+        <%= render partial: 'shared/request', collection: applied_rejected_requests%>
       <% end %>
     </div>
-    <div>
+
+    <div class="row Crow-bottom-space">
       <% working_requests = @user.get_my_workings %>
-      <h3>取り組み中のお仕事 (<%= working_requests.count %>)</h3>
+      <div class="col-md-12">
+        <h3>取り組み中のお仕事 (<%= working_requests.count %>件)</h3>
+      </div>
       <% if working_requests.any? %>
-        <ol>
-          <%= render partial: 'shared/request', collection: working_requests%>
-        </ol>
+        <%= render partial: 'shared/request', collection: working_requests%>
       <% end %>
     </div>
-    <div>
+
+    <div class="row Crow-bottom-space">
       <% completed_requests = @user.get_my_completeds %>
-      <h3>完了済みのお仕事 (<%= completed_requests.count %>)</h3>
+      <div class="col-md-12">
+        <h3>完了済みのお仕事 (<%= completed_requests.count %>)</h3>
+      </div>
       <% if completed_requests.any? %>
-        <ol>
-          <%= render partial: 'shared/request', collection: completed_requests%>
-        </ol>
+        <%= render partial: 'shared/request', collection: completed_requests%>
       <% end %>
     </div>
   </div>

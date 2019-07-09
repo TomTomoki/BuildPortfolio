@@ -1,4 +1,17 @@
-<li>
-  <%= link_to request.title, request %>
-  Created by creator_id: <%= request.creator.username %>
-</li>
+<div class="col-md-4 Ccolumn-request">
+  <div class="rounded-lg border Crequest">
+    <img src="http://fusic.co.jp/img/system/fusic_ogp.jpg" class="Crequest-pic"></img>
+    <div class="Crequest-content">
+      <div class="Crequest-title">
+        <strong><%= request.title %></strong>
+      </div>
+      <p class="Crequest-detail">
+        投稿者: <%= request.creator.username %>
+      </p>
+      <p class="Crequest-detail">
+        <span>&#64;</span> <%= request.location %>
+      </p>
+      <%= button_to "詳細", request_path(request), method: :get, class: 'btn btn-primary Cbtn' %>
+    </div>
+  </div>
+</div>
