@@ -1,0 +1,20 @@
+<div class="col-md-3 Ccolumn-request">
+  <div class="rounded-lg border Crequest">
+    <img src="http://fusic.co.jp/img/system/fusic_ogp.jpg" class="Crequest-pic"></img>
+    <div class="Crequest-content">
+      <div class="Crequest-title">
+        <strong><%= request_home.title %></strong>
+      </div>
+      <p class="Crequest-detail">
+        投稿者: <%= request_home.creator.username %>
+      </p>
+      <p class="Crequest-detail">
+        報酬: <%= request_home.reward %>
+      </p>
+      <p class="Crequest-detail">
+        <span>&#64;</span> <%= request_home.location %>
+      </p>
+      <%= button_to "詳細", request_path(request_home), method: :get, class: 'btn btn-primary Cbtn' %>
+    </div>
+  </div>
+</div>

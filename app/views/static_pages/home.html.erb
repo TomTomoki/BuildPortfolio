@@ -1,3 +1,14 @@
-<% provide(:title, "This is Home") %>
-
-<h1>Home</h1>
+<% provide(:title, "Home") %>
+<div class="row Crow-bottom-space">
+    <div class="col-md-12 Chorizontal-center">
+        <img src="http://gahag.net/img/201605/27s/gahag-0090262817-1.jpg"></img>
+    </div>
+</div>
+<div class="row Crow-bottom-space">
+    <div class="col-md-12 Chorizontal-center">
+        <h3>最近の募集</h3>
+    </div>
+    <% if @requests.any? %>
+        <%= render partial: 'shared/request_home', collection: @requests%>
+    <% end %>
+</div>
