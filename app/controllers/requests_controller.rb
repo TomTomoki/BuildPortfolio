@@ -8,9 +8,9 @@ class RequestsController < ApplicationController
     @user = @request.creator
     if !@request.nil?
       flash[:success] = "新規リクエストが作成されました。"
-      render 'show'
+      redirect_to request_path(@request)
     else
-      flash[:danger] = "新規リクエストが作成失敗。"
+      flash.now[:danger] = "新規リクエストが作成失敗。"
       render 'new'
     end
   end
@@ -30,8 +30,8 @@ class RequestsController < ApplicationController
       flash[:success] = "募集を削除しました。"
       redirect_to current_user
     else
-      flash[:danger] = "募集削除に失敗しました。"
-      redirect_to current_user
+      flash.now[:danger] = "募集削除に失敗しました。"
+      render 'show'
     end
   end
 
@@ -40,15 +40,15 @@ class RequestsController < ApplicationController
     @user = @request.creator
     if @request.update(open: !@request.open)
       flash[:success] = "募集ステータスを変更しました。"
-      render 'show'
+      redirect_to request_path(@request)
     else
-      flash[:danger] = "募集ステータスの変更に失敗しました。"
+      flash.now[:danger] = "募集ステータスの変更に失敗しました。"
       render 'show'
     end
   end
 
   private
     def request_params
-      params.require(:request).permit(:title, :startDateTime, :endDateTime, :request_detail, :location, :requirements, :contact, :recruitment_number)
+      params.require(:request).permit(:title, :startDateTime, :endDateTime, :location, :requirements, :reward, :contact, :recruitment_number, :request_detail)
     end
 end

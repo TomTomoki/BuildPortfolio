@@ -9,6 +9,9 @@
         投稿者: <%= request.creator.username %>
       </p>
       <p class="Crequest-detail">
+        報酬: <%= request.reward %>
+      </p>
+      <p class="Crequest-detail">
         <span>&#64;</span> <%= request.location %>
       </p>
       <%= button_to "詳細", request_path(request), method: :get, class: 'btn btn-primary Cbtn' %>

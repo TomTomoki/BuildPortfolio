@@ -7,6 +7,7 @@ class Request < ApplicationRecord
     validates(:title, presence: true, length: {:maximum => 50})
     validates(:startDateTime, presence: true)
     validates(:endDateTime, presence: true)
+    validates(:reward, presence: true)
     validate(:check_start_end_dates)
     validates(:location, presence: true)
     validates(:recruitment_number, presence: true)

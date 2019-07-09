@@ -1,36 +1,33 @@
 <% provide(:title, 'リクエスト作成') %>
-<h1>新規リクエスト作成</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@request, url: requests_path) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <p>リクエストタイトル</p>
-      <%= f.text_field :title, class: 'form-control' %>
-
-      <p>開始日時</p>
-      <%= f.datetime_field :startDateTime, class: 'form-control' %>
-
-      <p>終了日時</p>
-      <%= f.datetime_field :endDateTime, class: 'form-control' %>
-
-      <p>場所</p>
-      <%= f.text_field :location, class: 'form-control' %>
-
-      <p>条件・必要なスキル</p>
-      <%= f.text_field :requirements, class: 'form-control' %>
-
-      <p>募集人数</p>
-      <%= f.number_field :recruitment_number, class: 'form-control' %>
-
-      <p>連絡先</p>
-      <%= f.text_field :contact, class: 'form-control' %>
-
-      <p>詳細・メッセージ</p>
-      <%= f.text_area :request_detail, class: 'form-control' %>
-
-      <%= f.submit "リクエスト作成", class: "btn btn-primary" %>
-    <% end %>
+<div class="Cform-frame"> 
+  <div class="col-md-12">
+    <h1>新規リクエスト作成</h1>
   </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_for(@request, url: requests_path, html:{ class: "Cform-for rounded-lg border" }) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <h5 class="Cno-margin-bottom">リクエストタイトル</h5>
+        <%= f.text_field :title, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">開始日時</h5>
+        <%= f.datetime_field :startDateTime, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">終了日時</h5>
+        <%= f.datetime_field :endDateTime, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">場所</h5>
+        <%= f.text_field :location, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">条件・必要なスキル</h5>
+        <%= f.text_field :requirements, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">報酬</h5>
+        <%= f.text_field :reward, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">募集人数</h5>
+        <%= f.number_field :recruitment_number, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">連絡先</h5>
+        <%= f.text_field :contact, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">詳細・メッセージ</h5>
+        <%= f.text_area :request_detail, class: 'Cform-control' %>
+        <div class="Chorizontal-center">
+          <%= f.submit "リクエスト作成", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
 </div>

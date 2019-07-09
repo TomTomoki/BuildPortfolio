@@ -1,30 +1,28 @@
 <% provide(:title, 'ユーザ作成') %>
-<h1>新規ユーザー作成</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user, url: users_path) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <p>ユーザーネーム</p>
-      <%= f.text_field :username, class: 'form-control' %>
-
-      <p>氏名</p>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <p>生年月日</p>
-      <%= f.date_field :birthdate, class: 'form-control' %>
-
-      <p>メールアドレス</p>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <p>パスワード</p>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <p>パスワード確認</p>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "ユーザー作成", class: "btn btn-primary" %>
-    <% end %>
+<div class="Cform-frame"> 
+  <div class="col-md-12">
+    <h1>新規ユーザー作成</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_for(@user, url: users_path, html:{ class: "Cform-for rounded-lg border" }) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <h5 class="Cno-margin-bottom">ユーザーネーム</h5>
+        <%= f.text_field :username, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">氏名</h5>
+        <%= f.text_field :name, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">生年月日</h5>
+        <%= f.date_field :birthdate, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">メールアドレス</h5>
+        <%= f.email_field :email, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">パスワード</h5>
+        <%= f.password_field :password, class: 'Cform-control' %>
+        <h5 class="Cno-margin-bottom">パスワード確認</h5>
+        <%= f.password_field :password_confirmation, class: 'Cform-control' %>
+        <div class="Chorizontal-center">
+          <%= f.submit "ユーザー作成", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
