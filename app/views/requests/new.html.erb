@@ -9,9 +9,6 @@
       <p>リクエストタイトル</p>
       <%= f.text_field :title, class: 'form-control' %>
 
-      <p>詳細</p>
-      <%= f.text_area :request_detail, class: 'form-control' %>
-
       <p>開始日時</p>
       <%= f.datetime_field :startDateTime, class: 'form-control' %>
 
@@ -29,6 +26,9 @@
 
       <p>連絡先</p>
       <%= f.text_field :contact, class: 'form-control' %>
+
+      <p>詳細・メッセージ</p>
+      <%= f.text_area :request_detail, class: 'form-control' %>
 
       <%= f.submit "リクエスト作成", class: "btn btn-primary" %>
     <% end %>

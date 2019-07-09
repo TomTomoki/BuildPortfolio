@@ -1,36 +1,89 @@
 <% provide(:title, @request.title) %>
 
 <div class="row">
-    <div class ="col-md-8">
-        <p><%= @request.title %></p>
-        <p><%= @request.startDateTime %></p>
-        <p><%= @request.endDateTime %></p>
-        <p>募集数: <%= @request.recruitment_number %></p>
-
-        <% if current_user.id == @request.creator_id %>
-            <p>応募数: <%= @request.applicants.count %></p>
-            <p>ステータス: <%= @request.request_status_inJap %></p>
-            <%= button_to "募集削除", request_path(@request), method: :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-primary Cbtn' %>
-            <%= button_to "募集ステータス変更", change_open_status_request_path(@request), method: :patch, data: { confirm: "募集ステータスを変更しますか?" }, class: 'btn btn-primary Cbtn' %>
-        <% elsif !@request.open && current_user.application_status(@request) == "notapplied" %>
-            <button type="button" class="btn btn-lg btn-primary Cbtn" disabled>募集終了</button>
-        <% elsif @request.open && current_user.application_status(@request) == "notapplied" %>
-            <%= button_to "応募", apply_path(request: @request), method: :post, data: { confirm: "この募集に応募しますか?" }, class: 'btn btn-primary Cbtn' %>
-        <% elsif current_user.application_status(@request) == "rejected" %>
-            <button type="button" class="btn btn-lg btn-primary Cbtn" disabled>今回は不採用となりました</button>    
-        <% elsif current_user.application_status(@request) == "applied" %>
-            <%= button_to "辞退", withdraw_path(request: @request), method: :delete, data: { confirm: "この応募を辞退しますか?" }, class: 'btn btn-primary Cbtn' %>
-        <% elsif current_user.application_status(@request) == "working" %>
-            <button type="button" class="btn btn-lg btn-primary Cbtn" disabled>取り組み中</button>
-        <% elsif current_user.application_status(@request) == "completed" %>
-            <button type="button" class="btn btn-lg btn-primary Cbtn" disabled>作業完了</button>
-        <% else %>
-            うまくif使えてないぞー
-        <% end %>
+    <div class="col-md-3">
+        <%= render partial: 'shared/profile' %>
+    </div>
+    <div class ="col-md-8 border Crequest-detail-frame">
+        <img src="http://fusic.co.jp/img/system/fusic_ogp.jpg" class="Crequest-detail-pic border border-dark"></img>
+        <div class="Crequest-detail-content">
+            <h2 class="Crequest-detail-title"><%= @request.title %></h1>
+            <table class="table table-gray">
+                <tbody>
+                    <tr>
+                        <td>開始日時</td>
+                        <td><%= @request.startDateTime %></td>
+                    </tr>
+                    <tr>
+                        <td>終了日時</td>
+                        <td><%= @request.endDateTime %></td>
+                    </tr>
+                    <tr>
+                        <td>場所</td>
+                        <td><%= @request.location %></td>
+                    </tr>
+                    <tr>
+                        <td>条件など</td>
+                        <td><%= @request.requirements %></td>
+                    </tr>
+                    <tr>
+                        <td>募集人数</td>
+                        <td><%= @request.recruitment_number %></td>
+                    </tr>
+                    <tr>
+                        <td>連絡先</td>
+                        <td><%= @request.contact %></td>
+                    </tr>
+                    <tr>
+                        <td>詳細・メッセージ</td>
+                        <td><%= @request.request_detail %></td>
+                    </tr>
+                    <% if current_user.id == @request.creator_id %>
+                        <tr>
+                            <td>募集状況</td>
+                            <td><strong class="Ccolor-red"><%= @request.request_status_inJap %></strong></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <div class="row">
+                <% if current_user.id == @request.creator_id %>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary Cbtn" disabled>編集</button>
+                    </div>
+                    <div class="col-md-4">
+                        <%= button_to "募集ステータス変更", change_open_status_request_path(@request), method: :patch, data: { confirm: "募集ステータスを変更しますか?" }, class: 'btn btn-primary Cbtn' %>
+                    </div>
+                    <div class="col-md-4">
+                        <%= button_to "募集削除", request_path(@request), method: :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-outline-danger Cbtn' %>
+                    </div>
+                <% elsif !@request.open && current_user.application_status(@request) == "notapplied" %>
+                    <button type="button" class="btn btn-primary Cbtn" disabled>募集終了</button>
+                <% elsif @request.open && current_user.application_status(@request) == "notapplied" %>
+                    <div class="col-md-12 Cbottom-margin">
+                        <%= button_to "応募", apply_path(request: @request), method: :post, data: { confirm: "この募集に応募しますか?" }, class: 'btn btn-warning Cbtn' %>
+                    </div>
+                <% elsif current_user.application_status(@request) == "rejected" %>
+                    <button type="button" class="btn btn-lg btn-primary Cbtn" disabled>今回は不採用となりました</button>    
+                <% elsif current_user.application_status(@request) == "applied" %>
+                    <div class="col-md-12 Cbottom-margin">
+                        <%= button_to "辞退", withdraw_path(request: @request), method: :delete, data: { confirm: "この応募を辞退しますか?" }, class: 'btn btn-primary Cbtn' %>
+                    </div>
+                <% elsif current_user.application_status(@request) == "working" %>
+                    <button type="button" class="btn btn-primary Cbtn" disabled>取り組み中</button>
+                <% elsif current_user.application_status(@request) == "completed" %>
+                    <button type="button" class="btn btn-primary Cbtn" disabled>作業完了</button>
+                <% else %>
+                    <button type="button" class="btn btn-warning Cbtn" disabled>うまくif使えてないぞー</button>
+                <% end %>
+            </div>
+            <div class="row">
+                <% if current_user.id == @request.creator_id %>
+                    <div class="row">
+                        <%= render partial: 'requests/applications_status' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>
-<% if current_user.id == @request.creator_id %>
-    <div class="row">
-        <%= render partial: 'requests/applications_status' %>
-    </div>
-<% end %>

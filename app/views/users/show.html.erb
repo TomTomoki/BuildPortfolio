@@ -1,19 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="row">
   <div class="col-md-3">
-    <div class="profile-sidebar border">
-      <div class="profile-userpic">
-        <img src="/images/default_pic.png" class="img-responsive" alt="Cinque Terre">
-      </div>
-      <div class="profile-usertitle">
-        <div class="profile-name">
-          <%= @user.name %>
-        </div>
-        <div class="profile-username">
-          ユーザー名: <%= @user.username %>
-        </div>
-      </div>
-    </div>
+    <%= render partial: 'shared/profile' %>
   </div>
   <div class="col-md-8">
     <div class="row Crow-bottom-space">
@@ -25,7 +13,6 @@
         <%= render partial: 'shared/request', collection: created_requests%>
       <% end %>
     </div>
-
     <div class="row Crow-bottom-space">
       <% applied_rejected_requests = @user.get_my_applieds_rejecteds %>
       <div class="col-md-12">
@@ -35,7 +22,6 @@
         <%= render partial: 'shared/request', collection: applied_rejected_requests%>
       <% end %>
     </div>
-
     <div class="row Crow-bottom-space">
       <% working_requests = @user.get_my_workings %>
       <div class="col-md-12">
@@ -45,7 +31,6 @@
         <%= render partial: 'shared/request', collection: working_requests%>
       <% end %>
     </div>
-
     <div class="row Crow-bottom-space">
       <% completed_requests = @user.get_my_completeds %>
       <div class="col-md-12">

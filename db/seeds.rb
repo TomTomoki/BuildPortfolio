@@ -29,9 +29,9 @@ request = Request.create!(
         title:"畑の草取り",
         startDateTime:"2019-10-19 10:25:00",
         endDateTime:"2019-10-20 14:30:00",
-        request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
+        request_detail: "2018年秋より祖父母がやっていた農業を引き継ぐことになり、お手伝いを募集します。特に経験等は問いません。元気があるかた集まれー！",
         location: "福岡県糟屋郡志免町",
-        requirements: "長靴、作業服、軍手、飲み物",
+        requirements: "元気があること",
         contact: "000-000-0987",
         creator: user,
         recruitment_number: 1
@@ -41,9 +41,9 @@ request2 = Request.create!(
         title:"畑の草取り2",
         startDateTime:"2019-10-19 10:25:00",
         endDateTime:"2019-10-20 14:30:00",
-        request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
+        request_detail: "2018年秋より祖父母がやっていた農業を引き継ぐことになり、お手伝いを募集します。特に経験等は問いません。元気があるかた集まれー！",
         location: "福岡県糟屋郡志免町",
-        requirements: "長靴、作業服、軍手、飲み物",
+        requirements: "元気があること",
         contact: "000-000-0987",
         creator: user,
         recruitment_number: 1
@@ -55,7 +55,7 @@ Request.create!(
         endDateTime:"2019-10-20 14:30:00",
         request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
         location: "福岡県糟屋郡志免町",
-        requirements: "パソコン",
+        requirements: "やる気があること",
         contact: "000-000-0987",
         creator: user2,
         recruitment_number: 2
@@ -67,19 +67,7 @@ Request.create!(
         endDateTime:"2019-10-20 14:30:00",
         request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
         location: "福岡県糟屋郡志免町",
-        requirements: "パソコン",
-        contact: "000-000-0987",
-        creator: user2,
-        recruitment_number: 2
-)
-
-Request.create!(
-        title:"Rails3",
-        startDateTime:"2019-10-19 10:25:00",
-        endDateTime:"2019-10-20 14:30:00",
-        request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
-        location: "福岡県糟屋郡志免町",
-        requirements: "パソコン",
+        requirements: "やる気があること",
         contact: "000-000-0987",
         creator: user2,
         recruitment_number: 2
@@ -91,7 +79,7 @@ Request.create!(
     endDateTime = "2019-10-20 14:30:00"
     request_detail = "example-#{n+1}"
     location = "example-#{n+1}"
-    requirements = "長靴、作業服、軍手、飲み物"
+    requirements = "18歳以上"
     contact = "000-000-098#{n+1}"
 
     Request.create!(

@@ -5,6 +5,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = current_user.created_requests.create!(request_params)
+    @user = @request.creator
     if !@request.nil?
       flash[:success] = "新規リクエストが作成されました。"
       render 'show'
@@ -20,6 +21,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    @user = @request.creator
   end
 
   def destroy
@@ -33,11 +35,9 @@ class RequestsController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def change_open_status
     @request = current_user.created_requests.find(params[:id])
+    @user = @request.creator
     if @request.update(open: !@request.open)
       flash[:success] = "募集ステータスを変更しました。"
       render 'show'

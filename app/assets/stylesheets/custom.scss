@@ -101,6 +101,7 @@
   width: 100%;
   height: 100%;
   background-color: rgb(149, 201, 247);
+  word-wrap: break-word;
 }
 
 .Crequest-pic{
@@ -130,6 +131,29 @@
 }
 
 
+/* request detail */
+.Crequest-detail-frame{
+  text-align: center;
+}
+
+.Crequest-detail-pic{
+  height: 250px;
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.Crequest-detail-content{
+  padding: 15px;
+  word-wrap: break-word;
+}
+
+.Crequest-detail-title{
+  background-color: rgb(149, 201, 247);
+}
+
+
+
 /* miscellaneous */
 .debug_dump {
   clear: both;
@@ -140,5 +164,14 @@
 }
 
 .Cbtn {
-  margin: 3px
+  margin: 3px;
+  padding: 1px;
+}
+
+.Cbottom-margin{
+  margin-bottom: 30px;
+}
+
+.Ccolor-red{
+  color:red;
 }

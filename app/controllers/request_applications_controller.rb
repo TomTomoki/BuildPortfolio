@@ -2,6 +2,7 @@ class RequestApplicationsController < ApplicationController
     def create
         user = current_user
         @request = Request.find(params[:request])
+        @user = @request.creator
     
         if user.resume_registered?
             user.request_applications.create(request_id: @request.id)
@@ -15,6 +16,7 @@ class RequestApplicationsController < ApplicationController
 
     def destroy
         @request = current_user.applied_requests.find(params[:request])
+        @user = @request.creator
         if Request_Application.find_by(applicant_id: current_user.id, request_id: @request.id).destroy
             flash.now[:success] = "応募を辞退しました。"
             render 'requests/show'
@@ -26,6 +28,7 @@ class RequestApplicationsController < ApplicationController
 
     def change_application_status
         @request = current_user.created_requests.find(params[:request])
+        @user = @request.creator
         applicant = @request.applicants.find(params[:applicant])
 
         application = Request_Application.find_by(applicant_id: applicant.id, request_id: @request.id)
