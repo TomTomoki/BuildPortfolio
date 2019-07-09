@@ -7,7 +7,8 @@ class RequestApplicationsController < ApplicationController
         if user.resume_registered?
             user.request_applications.create(request_id: @request.id)
             flash.now[:success] = "応募が完了しました。"
-            render 'requests/show'
+            redirect_to request_path(@request)
+            #render 'requests/show' #
         else
             flash.now[:danger] = '応募には履歴書の登録が必要です。'
             #render 'resumes/new' 履歴書登録ページへ

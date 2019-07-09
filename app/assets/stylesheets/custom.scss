@@ -152,6 +152,16 @@
   background-color: rgb(149, 201, 247);
 }
 
+.Crequest-detail-application-status-frame{
+  margin-bottom: 30px;
+  border-radius: 25px;
+  background-color: rgb(227, 228, 240);
+  padding: 20px; 
+}
+
+.Crequest-details-applicant-name{
+  font-size: 25px;
+}
 
 
 /* miscellaneous */
@@ -165,7 +175,7 @@
 
 .Cbtn {
   margin: 3px;
-  padding: 1px;
+  padding: 0px;
 }
 
 .Cbottom-margin{
@@ -174,4 +184,14 @@
 
 .Ccolor-red{
   color:red;
+}
+
+.Chr {
+  border-top: 1px dashed #0074D9;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.Chorizontal-center{
+  text-align: left;
 }

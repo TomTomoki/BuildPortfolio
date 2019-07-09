@@ -1,10 +1,20 @@
-<li>
-  <%= link_to applicant.name, applicant %>
+<div class="row">
+  <div class="col-md-6 Crequest-details-applicant-name">
+    <%= link_to applicant.name, applicant %>
+  </div>
   <% if current_status == "applied" %>
-    <%= button_to "不採用", change_application_status_path(request:@request, applicant:applicant, new_status:"rejected"), method: :patch, data: { confirm: "この応募者を不採用にしますか?" }, class: 'btn btn-primary Cbtn' %>
-    <%= button_to "採用", change_application_status_path(request:@request, applicant:applicant, new_status:"working"), method: :patch, data: { confirm: "この応募者を採用しますか?" }, class: 'btn btn-primary Cbtn' %>
+    <div class="col-md-3">
+      <%= button_to "採用", change_application_status_path(request:@request, applicant:applicant, new_status:"working"), method: :patch, data: { confirm: "この応募者を採用しますか?" }, class: 'btn btn-outline-success Cbtn' %>  
+    </div>
+    <div class="col-md-3">
+      <%= button_to "不採用", change_application_status_path(request:@request, applicant:applicant, new_status:"rejected"), method: :patch, data: { confirm: "この応募者を不採用にしますか?" }, class: 'btn btn-outline-danger Cbtn' %>
+    </div>
   <% elsif current_status == "working" %>
-    <%= button_to "中止", change_application_status_path(request:@request, applicant:applicant, new_status:"rejected"), method: :patch, data: { confirm: "この作業を中止しますか?" }, class: 'btn btn-primary Cbtn' %>
-    <%= button_to "終了", change_application_status_path(request:@request, applicant:applicant, new_status:"completed"), method: :patch, data: { confirm: "この作業を終了しますか?" }, class: 'btn btn-primary Cbtn' %>
+    <div class="col-md-3">
+      <%= button_to "完了", change_application_status_path(request:@request, applicant:applicant, new_status:"completed"), method: :patch, data: { confirm: "この作業を終了しますか?" }, class: 'btn btn-outline-success Cbtn' %>
+    </div>
+    <div class="col-md-3">
+      <%= button_to "中止", change_application_status_path(request:@request, applicant:applicant, new_status:"rejected"), method: :patch, data: { confirm: "この作業を中止しますか?" }, class: 'btn btn-outline-danger Cbtn' %>
+    </div>
   <% end %>
-</li>
+</div>

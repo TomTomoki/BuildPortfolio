@@ -58,32 +58,39 @@
                         <%= button_to "募集削除", request_path(@request), method: :delete, data: { confirm: "この募集を削除しますか?" }, class: 'btn btn-outline-danger Cbtn' %>
                     </div>
                 <% elsif !@request.open && current_user.application_status(@request) == "notapplied" %>
-                    <button type="button" class="btn btn-primary Cbtn" disabled>募集終了</button>
+                    <div class="col-md-12 Cbottom-margin">
+                        <button type="button" class="btn btn-primary Cbtn" disabled>募集終了</button>
+                    </div>
                 <% elsif @request.open && current_user.application_status(@request) == "notapplied" %>
                     <div class="col-md-12 Cbottom-margin">
                         <%= button_to "応募", apply_path(request: @request), method: :post, data: { confirm: "この募集に応募しますか?" }, class: 'btn btn-warning Cbtn' %>
                     </div>
                 <% elsif current_user.application_status(@request) == "rejected" %>
-                    <button type="button" class="btn btn-lg btn-primary Cbtn" disabled>今回は不採用となりました</button>    
+                    <div class="col-md-12 Cbottom-margin">
+                        <button type="button" class="btn btn-lg btn-primary Cbtn" disabled>今回は不採用となりました</button>   
+                    </div> 
                 <% elsif current_user.application_status(@request) == "applied" %>
                     <div class="col-md-12 Cbottom-margin">
                         <%= button_to "辞退", withdraw_path(request: @request), method: :delete, data: { confirm: "この応募を辞退しますか?" }, class: 'btn btn-primary Cbtn' %>
                     </div>
                 <% elsif current_user.application_status(@request) == "working" %>
-                    <button type="button" class="btn btn-primary Cbtn" disabled>取り組み中</button>
+                    <div class="col-md-12 Cbottom-margin">
+                        <button type="button" class="btn btn-primary Cbtn" disabled>取り組み中</button>
+                    </div>
                 <% elsif current_user.application_status(@request) == "completed" %>
-                    <button type="button" class="btn btn-primary Cbtn" disabled>作業完了</button>
+                    <div class="col-md-12 Cbottom-margin">
+                        <button type="button" class="btn btn-primary Cbtn" disabled>作業完了</button>
+                    </div>
                 <% else %>
-                    <button type="button" class="btn btn-warning Cbtn" disabled>うまくif使えてないぞー</button>
-                <% end %>
-            </div>
-            <div class="row">
-                <% if current_user.id == @request.creator_id %>
-                    <div class="row">
-                        <%= render partial: 'requests/applications_status' %>
+                    <div class="col-md-12 Cbottom-margin">    
+                        <button type="button" class="btn btn-warning Cbtn" disabled>うまくif使えてないぞー</button>
                     </div>
                 <% end %>
             </div>
+            <% if current_user.id == @request.creator_id %>
+                <hr class="Chr"/>
+                <%= render partial: 'requests/applications_status' %>
+            <% end %>
         </div>
     </div>
 </div>
