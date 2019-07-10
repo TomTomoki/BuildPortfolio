@@ -4,8 +4,12 @@
     <div class="col-md-3">
         <%= render partial: 'shared/profile' %>
     </div>
-    <div class ="col-md-8 border Crequest-detail-frame">
-        <img src="http://fusic.co.jp/img/system/fusic_ogp.jpg" class="Crequest-detail-pic border border-dark"></img>
+    <div class ="col-md-6 border Crequest-detail-frame">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <img src="http://fusic.co.jp/img/system/fusic_ogp.jpg" class="Crequest-detail-pic border border-dark"></img>
+            </div>
+        </div>
         <div class="Crequest-detail-content">
             <h2 class="Crequest-detail-title"><%= @request.title %></h1>
             <table class="table table-gray">
