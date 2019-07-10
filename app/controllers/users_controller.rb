@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:info] = "新規ユーザが作成されました。"
-      render 'show'
+      redirect_to @user
     else
       render 'new'
         #With the same URL, render the different template without a new request

@@ -6,7 +6,7 @@ class RequestApplicationsController < ApplicationController
     
         if user.resume_registered?
             user.request_applications.create(request_id: @request.id)
-            flash.now[:success] = "応募が完了しました。"
+            flash[:success] = "応募が完了しました。"
             redirect_to request_path(@request)
         else
             flash.now[:danger] = '応募には履歴書の登録が必要です。'
@@ -33,8 +33,12 @@ class RequestApplicationsController < ApplicationController
 
         application = Request_Application.find_by(applicant_id: applicant.id, request_id: @request.id)
 
-        application.update(status: params[:new_status])
-        flash[:success] = "応募者のステータスを「#{application.status_in_Jap}」に変更しました"
-        redirect_to request_path(@request)
+        if application.update(status: params[:new_status])
+            flash[:success] = "応募者のステータスを「#{application.status_in_Jap}」に変更しました"
+            redirect_to request_path(@request)
+        else
+            flash.now[:danger] = "応募者のステータスを変更できませんでした。"
+            render 'requests/show'
+        end
     end
 end
