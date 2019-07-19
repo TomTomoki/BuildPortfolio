@@ -1,6 +1,6 @@
 user1 = User.create!(
-    username:"京谷朋樹",
-    name:"京谷朋樹",
+    username:"菊池勇気",
+    name:"菊池勇気",
     birthdate:"2019-10-20",
     email:"example@railstutorial.org",
     password:"password",
@@ -17,8 +17,8 @@ user2 = User.create!(
 )
 
 user3 = User.create!(
-    username:"安河内シュン",
-    name:"安河内シュン",
+    username:"山田シュン",
+    name:"山田シュン",
     birthdate:"2019-10-20",
     email:"example3@railstutorial.org",
     password:"password",
@@ -26,8 +26,8 @@ user3 = User.create!(
 )
 
 user4 = User.create!(
-    username:"安河内しゅん",
-    name:"安河内しゅん",
+    username:"井口悠人",
+    name:"井口悠人",
     birthdate:"2019-10-20",
     email:"example4@railstutorial.org",
     password:"password",
@@ -53,7 +53,7 @@ request2 = Request.create!(
         endDateTime:"2019-10-20 14:30:00",
         request_detail: "2018年秋より祖父母がやっていた農業を引き継ぐことになり、この度お手伝いを募集します。経験等は特に問いません。元気がある方集まれー！",
         reward: "両日のご飯・宿泊代をご馳走します",
-        location: "福岡県糟屋郡須惠町",
+        location: "福岡県糟屋郡宇美町",
         requirements: "元気があること",
         contact: "000-000-0987",
         creator: user2,
@@ -79,7 +79,7 @@ request3 = Request.create!(
         endDateTime:"2019-10-20 14:30:00",
         request_detail: "自分で交通手段を手配できる方（最寄駅：西鉄バスooo停）",
         reward: "6,000円",
-        location: "福岡県糟屋郡志免町",
+        location: "福岡県福岡市西区",
         requirements: "やる気があること",
         contact: "000-000-0987",
         creator: user3,
@@ -91,7 +91,7 @@ request3 = Request.create!(
     startDateTime = "2019-10-20 10:25:00"
     endDateTime = "2019-10-20 14:30:00"
     request_detail = "demo-#{n+1}"
-    location = "博多湾-{n+1}"
+    location = "博多湾-#{n+1}"
     requirements = "釣り好き"
     contact = "000-000-098#{n+1}"
     reward = "昼食"
